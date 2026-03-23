@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crypto-pipeline"
+version = "0.1.0"
+description = "Dual QR + trading pipeline: ingestion, clustering, LLM tagging, quant tools, alpha registry"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.5",
+    "httpx>=0.27",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "sentence-transformers>=2.6",
+    "hdbscan>=0.8.33",
+    "scikit-learn>=1.4",
+    "openai>=1.30",
+    "ccxt>=4.2",
+    "langdetect>=1.0.9",
+    "sqlalchemy>=2.0",
+    "redis>=5.0",
+    "psycopg[binary]>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["crypto_pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
